@@ -19,26 +19,28 @@ function App() {
   }, [socket, user]);
 
   return (
-    <div className="container">
-      {user ? (
-        <>
-          <Navbar socket={socket} />
-          {posts.map((post) => (
-            <Card key={post.id} post={post} socket={socket} user={user} />
-          ))}
+    <div className="wrapper">
+      <div className="container">
+        {user ? (
+          <>
+            <Navbar socket={socket} />
+            {posts.map((post) => (
+              <Card key={post.id} post={post} socket={socket} user={user} />
+            ))}
 
-          <span className="username">{user}</span>
-        </>
-      ) : (
-        <div className="login">
-          <input
-            type="text"
-            placeholder="username"
-            onChange={(e) => setUsername(e.target.value)}
-          />
-          <button onClick={() => setUser(username)}> Login </button>
-        </div>
-      )}
+            <span className="username">{user}</span>
+          </>
+        ) : (
+          <div className="login">
+            <input
+              type="text"
+              placeholder="username"
+              onChange={(e) => setUsername(e.target.value)}
+            />
+            <button onClick={() => setUser(username)}> Login </button>
+          </div>
+        )}
+      </div>
     </div>
   );
 }
